@@ -129,6 +129,10 @@ class AtomList(object):
     :type index: int
     :rtype: Atom or Atom2D
     """
+
+    if index < 0 or index >= self.natoms:
+        raise IndexError("AtomList index out of range")
+
     if index not in self._loaded:
         if self.dimensions == 2:
             atom = Atom2D(self._pylmp, index)
